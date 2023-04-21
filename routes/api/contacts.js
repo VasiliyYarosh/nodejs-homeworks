@@ -3,12 +3,13 @@ const contacts = require('../../models/contacts')
 const Joi = require("joi")
 const { HttpError } = require("../../utils")
 
+
 const router = express.Router()
 
 const addSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().required(),
-  phone: Joi.number().required(),
+  phone: Joi.string().length(14).required(),
 })
 
 router.get('/', async (req, res, next) => {
